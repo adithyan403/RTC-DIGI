@@ -399,11 +399,17 @@
                                         </style>
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <label class="form-label text-uppercase small fw-bold text-secondary">Route
                                             Details</label>
                                         <input type="text" class="form-control form-control-lg bg-light border-0"
                                             placeholder="Origin - Destination">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Via
+                                            Route</label>
+                                        <input type="text" class="form-control form-control-lg bg-light border-0"
+                                            placeholder="Via Points">
                                     </div>
 
                                     <div class="col-md-6">
@@ -417,7 +423,50 @@
                                             Time (Calculated)</label>
                                         <input type="text"
                                             class="form-control form-control-lg bg-primary-subtle border-0 text-primary fw-bold"
-                                            value="10:25 PM" readonly>
+                                            value="10:25 PM">
+                                    </div>
+
+                                    <!-- Crew Details Section -->
+                                    <div class="col-12 mt-4">
+                                        <h6 class="fw-bold text-dark border-bottom pb-2">Crew Details</h6>
+                                    </div>
+
+                                    <!-- Conductor Details -->
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Conductor
+                                            Name</label>
+                                        <input type="text" class="form-control bg-light border-0" placeholder="Name">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Conductor
+                                            ID</label>
+                                        <input type="text" class="form-control bg-light border-0"
+                                            placeholder="ID Number">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Conductor
+                                            Phone</label>
+                                        <input type="tel" class="form-control bg-light border-0"
+                                            placeholder="Phone Number">
+                                    </div>
+
+                                    <!-- Driver Details -->
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Driver
+                                            Name</label>
+                                        <input type="text" class="form-control bg-light border-0" placeholder="Name">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Driver
+                                            ID</label>
+                                        <input type="text" class="form-control bg-light border-0"
+                                            placeholder="ID Number">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-uppercase small fw-bold text-secondary">Driver
+                                            Phone</label>
+                                        <input type="tel" class="form-control bg-light border-0"
+                                            placeholder="Phone Number">
                                     </div>
 
                                     <div class="col-12 mt-4 text-end">
@@ -642,7 +691,7 @@
                                     <th class="py-3">Sch. Dep</th>
                                     <th class="py-3">Act. Dep</th>
                                     <th class="py-3">Alerts</th>
-                                    <th class="pe-4 py-3 text-end">Action</th>
+                                    <th class="pe-4 py-3 text-end">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="fw-medium small">
@@ -656,8 +705,8 @@
                                     <td>14:15</td>
                                     <td class="text-danger">14:18</td>
                                     <td><span class="badge bg-warning text-dark">Dep Delay</span></td>
-                                    <td class="pe-4 text-end"><button class="btn btn-sm btn-light btn-sm-square"><i
-                                                class="bi bi-three-dots-vertical"></i></button></td>
+                                    <td class="pe-4 text-end"><span
+                                            class="badge bg-primary rounded-pill px-3">Running</span></td>
                                 </tr>
                                 <!-- Mock Data Row 2 -->
                                 <tr>
@@ -669,8 +718,8 @@
                                     <td>14:20</td>
                                     <td class="text-danger">14:21</td>
                                     <td>-</td>
-                                    <td class="pe-4 text-end"><button class="btn btn-sm btn-light btn-sm-square"><i
-                                                class="bi bi-three-dots-vertical"></i></button></td>
+                                    <td class="pe-4 text-end"><span
+                                            class="badge bg-success rounded-pill px-3">Completed</span></td>
                                 </tr>
                                 <!-- Mock Data Row 3 -->
                                 <tr>
@@ -682,8 +731,8 @@
                                     <td>14:35</td>
                                     <td class="text-success">14:35</td>
                                     <td><span class="badge bg-success">On Time</span></td>
-                                    <td class="pe-4 text-end"><button class="btn btn-sm btn-light btn-sm-square"><i
-                                                class="bi bi-three-dots-vertical"></i></button></td>
+                                    <td class="pe-4 text-end"><span
+                                            class="badge bg-warning text-dark rounded-pill px-3">Rescheduled</span></td>
                                 </tr>
                                 <!-- Mock Data Row 4 -->
                                 <tr>
@@ -695,8 +744,8 @@
                                     <td>14:40</td>
                                     <td class="text-danger">14:46</td>
                                     <td><span class="badge bg-secondary">Maint. Check</span></td>
-                                    <td class="pe-4 text-end"><button class="btn btn-sm btn-light btn-sm-square"><i
-                                                class="bi bi-three-dots-vertical"></i></button></td>
+                                    <td class="pe-4 text-end"><span
+                                            class="badge bg-danger rounded-pill px-3">Cancelled</span></td>
                                 </tr>
                                 <!-- Mock Data Row 5 -->
                                 <tr>
@@ -708,8 +757,8 @@
                                     <td>15:15</td>
                                     <td class="text-muted">--:--</td>
                                     <td><span class="badge bg-info text-dark">Scheduled</span></td>
-                                    <td class="pe-4 text-end"><button class="btn btn-sm btn-light btn-sm-square"><i
-                                                class="bi bi-three-dots-vertical"></i></button></td>
+                                    <td class="pe-4 text-end"><span
+                                            class="badge bg-primary rounded-pill px-3">Running</span></td>
                                 </tr>
                             </tbody>
                         </table>
