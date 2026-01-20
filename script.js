@@ -163,6 +163,38 @@ document.addEventListener('DOMContentLoaded', () => {
             logout();
         }
     });
+    // Live Sequence Tracker Search
+    const liveTrackerSearchInput = document.getElementById('liveTrackerSearchInput');
+    if (liveTrackerSearchInput) {
+        liveTrackerSearchInput.addEventListener('keyup', function() {
+            const filter = this.value.toUpperCase();
+            const table = document.getElementById('liveTrackerTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip header
+                let displayed = false;
+                // Search in Bus Number (index 0) and Current Depo (index 8)
+                // Adjust indices if needed. 
+                // Based on index.html:
+                // 0: Bus Number (td class ps-4)
+                // 8: Current Depo
+                
+                const tdBusNo = tr[i].getElementsByTagName('td')[0];
+                const tdDepo = tr[i].getElementsByTagName('td')[8];
+
+                if (tdBusNo || tdDepo) {
+                    const txtBusNo = tdBusNo.textContent || tdBusNo.innerText;
+                    const txtDepo = tdDepo ? (tdDepo.textContent || tdDepo.innerText) : "";
+                    
+                    if (txtBusNo.toUpperCase().indexOf(filter) > -1 || txtDepo.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    }
 });
 
 // Login Handler (outside DOMContentLoaded to ensure it runs if script is loaded differently, 
