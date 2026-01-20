@@ -281,19 +281,29 @@
 
                 <!-- Sequence Tracker -->
                 <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-bottom py-3">
+                    <div
+                        class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h6 class="fw-bold mb-0">Digital Sequence Tracker (Arrival/Departure Feed)</h6>
+                        <div class="input-group input-group-sm" style="max-width: 300px;">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-search text-secondary"></i></span>
+                            <input type="text" class="form-control bg-light border-start-0" id="liveTrackerSearchInput"
+                                placeholder="Search Bus No (e.g. KL-15)...">
+                        </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
+                        <table class="table table-hover align-middle mb-0" id="liveTrackerTable">
                             <thead class="bg-light text-secondary text-uppercase small">
                                 <tr>
                                     <th class="ps-4">Bus Number</th>
                                     <th>Service Type</th>
                                     <th>From/To</th>
-                                    <th>Sch. Time</th>
-                                    <th>Act. Time</th>
+                                    <th>Sch. Arr</th>
+                                    <th>Act. Arr</th>
+                                    <th>Sch. Dep</th>
+                                    <th>Act. Dep</th>
                                     <th>Deviation (IE Delta)</th>
+                                    <th>Current Depo</th>
                                     <th class="pe-4 text-end">Status</th>
                                 </tr>
                             </thead>
@@ -303,9 +313,12 @@
                                     <td><span class="badge border text-dark rounded-pill fw-normal px-3">Super
                                             Fast</span></td>
                                     <td>Trivandrum - Kannur</td>
+                                    <td>14:00</td>
+                                    <td>14:05</td>
                                     <td>14:15</td>
                                     <td>14:18</td>
                                     <td class="text-danger fw-bold">+3m</td>
+                                    <td>Trivandrum Central</td>
                                     <td class="pe-4 text-end"><span
                                             class="badge bg-secondary-subtle text-secondary rounded-1 px-3 py-2">Departed</span>
                                     </td>
@@ -315,9 +328,12 @@
                                     <td><span class="badge border text-dark rounded-pill fw-normal px-3">Ordinary</span>
                                     </td>
                                     <td>Nedumangad Local</td>
+                                    <td>14:10</td>
+                                    <td>14:12</td>
                                     <td>14:20</td>
                                     <td>14:21</td>
                                     <td class="text-danger fw-bold">+1m</td>
+                                    <td>Nedumangad</td>
                                     <td class="pe-4 text-end"><span
                                             class="badge bg-secondary-subtle text-secondary rounded-1 px-3 py-2">Departed</span>
                                     </td>
@@ -328,9 +344,12 @@
                                             class="badge border border-warning text-warning-emphasis rounded-pill fw-normal px-3 bg-warning-subtle">Minnal</span>
                                     </td>
                                     <td>TVM - Sulthan Bathery</td>
+                                    <td>14:30</td>
+                                    <td>14:30</td>
                                     <td>14:35</td>
                                     <td>14:35</td>
                                     <td class="text-success fw-bold">0m</td>
+                                    <td>Sulthan Bathery</td>
                                     <td class="pe-4 text-end"><span
                                             class="badge bg-success-subtle text-success rounded-1 px-3 py-2">At
                                             Platform</span></td>
@@ -340,9 +359,12 @@
                                     <td><span class="badge border text-dark rounded-pill fw-normal px-3">Fast
                                             Passenger</span></td>
                                     <td>Ernakulam Bypass</td>
+                                    <td>14:35</td>
+                                    <td>14:42</td>
                                     <td>14:40</td>
                                     <td>14:46</td>
                                     <td class="text-danger fw-bold">+6m</td>
+                                    <td>Ernakulam</td>
                                     <td class="pe-4 text-end"><span
                                             class="badge bg-success-subtle text-success rounded-1 px-3 py-2">Entering</span>
                                     </td>
@@ -375,10 +397,9 @@
                                         <label class="form-label text-uppercase small fw-bold text-secondary">Service
                                             Category</label>
                                         <select class="form-select form-select-lg bg-light border-0">
-                                            <option>Super Fast</option>
-                                            <option>Ordinary</option>
-                                            <option>Fast Passenger</option>
-                                            <option>Minnal</option>
+                                            <option>RTC</option>
+                                            <option>SHIFT</option>
+
                                         </select>
                                     </div>
 
@@ -620,8 +641,11 @@
                                                 <th class="ps-4">Date</th>
                                                 <th>Service Type</th>
                                                 <th>Route</th>
-                                                <th>Arrival</th>
-                                                <th>Departure</th>
+                                                <th>Sch. Arr</th>
+                                                <th>Act. Arr</th>
+                                                <th>Sch. Dep</th>
+                                                <th>Act. Dep</th>
+                                                <th>Current Depo</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
@@ -632,8 +656,11 @@
                                                         class="badge border text-dark rounded-pill fw-normal px-3">Super
                                                         Fast</span></td>
                                                 <td>TVM - Kannur</td>
+                                                <td>14:10</td>
                                                 <td>14:15</td>
+                                                <td>14:25</td>
                                                 <td>14:30</td>
+                                                <td>Kannur</td>
                                                 <td><span class="text-success fw-bold">On Time</span></td>
                                             </tr>
                                             <tr>
@@ -642,8 +669,11 @@
                                                         class="badge border text-dark rounded-pill fw-normal px-3">Super
                                                         Fast</span></td>
                                                 <td>TVM - Kannur</td>
+                                                <td>14:05</td>
                                                 <td>14:10</td>
+                                                <td>14:30</td>
                                                 <td>14:35</td>
+                                                <td>Kozhikode</td>
                                                 <td><span class="text-danger fw-bold">Delayed (+5m)</span></td>
                                             </tr>
                                             <tr>
@@ -652,8 +682,11 @@
                                                         class="badge border text-dark rounded-pill fw-normal px-3">Super
                                                         Fast</span></td>
                                                 <td>TVM - Kannur</td>
+                                                <td>14:10</td>
                                                 <td>14:15</td>
+                                                <td>14:25</td>
                                                 <td>14:30</td>
+                                                <td>Trivandrum</td>
                                                 <td><span class="text-success fw-bold">On Time</span></td>
                                             </tr>
                                         </tbody>
